@@ -63,6 +63,7 @@ const ListScreen = ({ navigation }) => {
                                     itemID:item?.id,
                                     itemDesc:item?.description,
                                     itemDue:item?.due,
+                                    itempriority:item?.priority,
                                 }
                             )}>
                                 <Text>{item.title}</Text>

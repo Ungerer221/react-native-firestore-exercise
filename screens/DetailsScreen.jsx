@@ -10,7 +10,7 @@ const DetailsScreen = ({ route, navigation }) => {
   // TODO : button marking as true
   // TODO : Updating data - found in add and manage data
   // TODO : add data using the setDoc (doc(db,"users","uid"),{}) so that when adding users it uses the same id
-  // TODO : amrk an item as completed should have a strickthrough styling
+  // TODO : mark an item as completed should have a strickthrough styling
 
   // ? Process 
   // click on item
@@ -19,16 +19,19 @@ const DetailsScreen = ({ route, navigation }) => {
   const [bucketItem, setBucketItem] = useState([]) // creating a usestate
   const [itemDescription, setItemDescription] = useState()
   const [itemDueDate, setItemDueDate] = useState()
+  const [itemPriority, setItemPriority] = useState()
+  //state for complete - starts false
 
 
   useFocusEffect(
     React.useCallback(() => {
-      const { itemID, itemDesc, itemDue } = route.params;
+      const { itemID, itemDesc, itemDue,itempriority } = route.params;
       console.log("Route", itemDesc)
       // Do something when the screen is focused
       handleGettingOfItemData(itemID)
       setItemDescription(itemDesc)
       setItemDueDate(itemDue)
+      setItemPriority(itempriority)
 
       return () => {
         // Do something when the screen is unfocused
@@ -51,9 +54,10 @@ const DetailsScreen = ({ route, navigation }) => {
       <Text style={{ fontSize: 24 }}>Bucket List Title Here</Text>
       <Text>Description Here: {itemDescription}</Text>
       <Text>Due date: {itemDueDate}</Text>
-      <Text>Priority: Yes</Text>
+      <Text>Priority: {itemPriority ? "Yes" : "No"}</Text>
 
       <Button
+        //onpress
         title='mark completed / already done'
         color="red"
         disabled={false}
