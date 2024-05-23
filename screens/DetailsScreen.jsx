@@ -4,7 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getBucketItem } from '../services/DbService';
 import { useFocusEffect } from '@react-navigation/native';
 
-const DetailsScreen = ({ navigation }) => {
+const DetailsScreen = ({ route, navigation }) => {
 
   // TODO : the detail screen 
   // TODO : button marking as true
@@ -17,11 +17,19 @@ const DetailsScreen = ({ navigation }) => {
   // call info specific to item selected
 
   const [bucketItem, setBucketItem] = useState([]) // creating a usestate
+  const [itemDescription, setItemDescription] = useState()
+  const [itemDueDate, setItemDueDate] = useState()
+
 
   useFocusEffect(
     React.useCallback(() => {
+      const { itemID, itemDesc, itemDue } = route.params;
+      console.log("Route", itemDesc)
       // Do something when the screen is focused
-      handleGettingOfItemData()
+      handleGettingOfItemData(itemID)
+      setItemDescription(itemDesc)
+      setItemDueDate(itemDue)
+
       return () => {
         // Do something when the screen is unfocused
         // Useful for cleanup functions
@@ -30,8 +38,8 @@ const DetailsScreen = ({ navigation }) => {
     }, [])
   );
 
-  const handleGettingOfItemData = async () => {
-    var itemData = await getBucketItem()
+  const handleGettingOfItemData = async (itemID) => {
+    var itemData = await getBucketItem(itemID)
     // check other consol log in Dbservice above the return
     // console.log("Item Data: " + itemData) 
     setBucketItem(itemData)
@@ -41,8 +49,8 @@ const DetailsScreen = ({ navigation }) => {
 
     <View style={styles.container}>
       <Text style={{ fontSize: 24 }}>Bucket List Title Here</Text>
-      <Text>Description Here</Text>
-      <Text>Due date: Tomorrow?</Text>
+      <Text>Description Here: {itemDescription}</Text>
+      <Text>Due date: {itemDueDate}</Text>
       <Text>Priority: Yes</Text>
 
       <Button

@@ -57,7 +57,14 @@ const ListScreen = ({ navigation }) => {
                     // first check if items is empty - if not empty then display map - empty then display text
                     bucketItems != [] ? (
                         bucketItems.map((item, index) => (
-                            <TouchableOpacity key={index} style={styles.card} onPress={() => navigation.navigate("Details")}>
+                            
+                            <TouchableOpacity key={index} style={styles.card} onPress={() => navigation.navigate("Details",
+                                {
+                                    itemID:item?.id,
+                                    itemDesc:item?.description,
+                                    itemDue:item?.due,
+                                }
+                            )}>
                                 <Text>{item.title}</Text>
                                 {/* // when the item is a priority the star must show - with if statement */}
                                 {item.priority ? <AntDesign name="star" size={24} color="orange" /> : null}

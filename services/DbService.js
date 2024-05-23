@@ -56,10 +56,10 @@ export const getMyBucketList = async () => {
 // 1. get id of the item you pressed
 // 2. have that item id = var
 // 3. have the var being called in the getDoc
-export const getBucketItem = async () => {
+export const getBucketItem = async (itemID) => {
     // const id = query(collection(db,"items"))
 
-    const docRef = doc(db, "items", "9X6N9ZOn1rqUJ6TcbZ1j");
+    const docRef = doc(db, "items", itemID);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
