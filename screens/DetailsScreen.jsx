@@ -3,6 +3,11 @@ import React from 'react'
 
 const DetailsScreen = ({navigation}) => {
 
+  // TODO : the detail screen 
+  // TODO : button marking as true
+  // TODO : Updating data - found in add and manage data
+  // TODO : add data using the setDoc (doc(db,"users","uid"),{}) so that when adding users it uses the same id
+
   return (
     
     <View style={styles.container}>
