@@ -38,6 +38,7 @@ const ListScreen = ({ navigation }) => {
         // console.log("All Data: " + allData) 
         setBucketItems(allData) // set bucket items tot alldata
     }
+    
 
     return (
         <SafeAreaView>

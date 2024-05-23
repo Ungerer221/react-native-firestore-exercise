@@ -1,6 +1,7 @@
 // all of our firestore functionality 
-import { collection, addDoc, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, orderBy, } from "firebase/firestore";
 import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 // * : create new list itm function 
 export const createNewBucketItem = async (item) => {
@@ -29,7 +30,7 @@ export const createNewBucketItem = async (item) => {
 export const getMyBucketList = async () => {
     // getDocs - get all the docs in our collection (optional where - that you can add)
 
-    // * create variable for all items 
+    // * create variable for all items ------------------------------------------------------------
     var allItems = [] // this is out array we want to return
 
     // to filter the order - making custom query 
@@ -39,7 +40,6 @@ export const getMyBucketList = async () => {
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
-
         allItems.push({ ...doc.data(), id: doc.id }) // push each docs data to the array i want to return
     });
     // can't just use query snapshot as the array of items - need to access .data()
@@ -48,4 +48,23 @@ export const getMyBucketList = async () => {
     // console.log(allItems)
     // the return is being called in the list screen
     return allItems
+}
+
+
+// TODO : Get single Item 
+// possable method
+// 1. get id of the item you pressed
+// 2. have that item id = var
+// 3. have the var being called in the getDoc
+export const getBucketItem = async () => {
+    // const id = query(collection(db,"items"))
+
+    const docRef = doc(db, "items", "9X6N9ZOn1rqUJ6TcbZ1j");
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+    } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+    }
 }

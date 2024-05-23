@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
@@ -18,5 +18,5 @@ const app = initializeApp(firebaseConfig);
 
 // TODO: Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app)
-// when we export a variable or function it is accessable in other files 
+// when we export a variable or function it is accessable in other files
 // db is out connetion var to our firesstore
