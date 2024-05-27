@@ -6,9 +6,9 @@ import { useFocusEffect } from '@react-navigation/native';
 
 const DetailsScreen = ({ route, navigation }) => {
 
-  // TODO : the detail screen 
+  // * : the detail screen 
   // TODO : button marking as true
-  // TODO : Updating data - found in add and manage data
+  // TODO : Updating data - found in add and manage data in the docs
   // TODO : add data using the setDoc (doc(db,"users","uid"),{}) so that when adding users it uses the same id
   // TODO : mark an item as completed should have a strickthrough styling
 
@@ -28,10 +28,10 @@ const DetailsScreen = ({ route, navigation }) => {
       const { itemID, itemDesc, itemDue,itempriority } = route.params;
       console.log("Route", itemDesc)
       // Do something when the screen is focused
-      handleGettingOfItemData(itemID)
-      setItemDescription(itemDesc)
-      setItemDueDate(itemDue)
-      setItemPriority(itempriority)
+      handleGettingOfItemData(itemID) // getting the data that is being passed through
+      setItemDescription(itemDesc) // getting the data that is being passed through
+      setItemDueDate(itemDue) // getting the data that is being passed through
+      setItemPriority(itempriority) // getting the data that is being passed through
 
       return () => {
         // Do something when the screen is unfocused

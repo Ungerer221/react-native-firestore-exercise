@@ -60,10 +60,10 @@ const ListScreen = ({ navigation }) => {
                             
                             <TouchableOpacity key={index} style={styles.card} onPress={() => navigation.navigate("Details",
                                 {
-                                    itemID:item?.id,
-                                    itemDesc:item?.description,
-                                    itemDue:item?.due,
-                                    itempriority:item?.priority,
+                                    itemID:item?.id, // here we are passing the data to the details page
+                                    itemDesc:item?.description, // here we are passing the data to the details page
+                                    itemDue:item?.due, // here we are passing the data to the details page
+                                    itempriority:item?.priority, // here we are passing the data to the details page
                                 }
                             )}>
                                 <Text>{item.title}</Text>
